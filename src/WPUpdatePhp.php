@@ -38,12 +38,6 @@ class WPUpdatePhp {
 	 * @return void
 	 */
 	private function load_minimum_required_version_notice() {
-		// Check if this code is being run inside WordPress, because the tests will not have
-		// this function for example. This function is always available inside WordPress.
-		if ( ! function_exists( 'is_admin' ) ) {
-			return;
-		}
-
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
 			add_action( 'admin_notices', array( $this, 'admin_notice' ) );
 		}
