@@ -53,13 +53,28 @@ class WPUpdatePhp {
 	 */
 	private function load_minimum_required_version_notice() {
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
-			add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+			add_action( 'admin_notices', array( $this, 'minimum_admin_notice' ) );
 		}
 	}
 
-	public function admin_notice() {
+	public function minimum_admin_notice() {
 		echo '<div class="error">';
 		echo '<p>Unfortunately, this plugin can not run on PHP versions older than '. $this->minimum_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+		echo '</div>';
+	}
+
+	/**
+	 * @return void
+	 */
+	private function load_recommended_required_version_notice() {
+		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
+			add_action( 'admin_notices', array( $this, 'recommended_admin_notice' ) );
+		}
+	}
+
+	public function recommended_admin_notice() {
+		echo '<div class="error">';
+		echo '<p>This plugin recommends a PHP versions older than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 		echo '</div>';
 	}
 }
