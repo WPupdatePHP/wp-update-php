@@ -33,6 +33,20 @@ class WPUpdatePhp {
 	/**
 	 * @param $version
 	 *
+	 * @return bool
+	 */
+	public function does_it_meet_recommended_php_version( $version ) {
+		if ( $this->is_recommended_php_version( $version ) ) {
+			return true;
+		}
+
+		$this->load_recommended_required_version_notice();
+		return false;
+	}
+
+	/**
+	 * @param $version
+	 *
 	 * @return boolean
 	 */
 	private function is_minimum_php_version( $version ) {
