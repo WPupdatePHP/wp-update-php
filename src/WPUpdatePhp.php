@@ -73,7 +73,7 @@ class WPUpdatePhp {
 
 	public function recommended_admin_notice() {
 		echo '<div class="error">';
-		echo '<p>This plugin recommends a PHP versions older than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+		echo '<p>This plugin recommends a PHP versions higher than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 		echo '</div>';
 	}
 }
