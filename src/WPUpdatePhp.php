@@ -40,6 +40,15 @@ class WPUpdatePhp {
 	}
 
 	/**
+	 * @param $version
+	 *
+	 * @return boolean
+	 */
+	private function is_recommended_php_version( $version ) {
+		return version_compare( $this->recommended_version, $version, '<=' );
+	}
+
+	/**
 	 * @return void
 	 */
 	private function load_minimum_required_version_notice() {
