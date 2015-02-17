@@ -22,7 +22,7 @@ class WPUpdatePhp {
 	 * @return bool
 	 */
 	public function does_it_meet_required_php_version( $version ) {
-		if ( $this->is_minimum_php_version( $version ) ) {
+		if ( $this->version_passes_requirement( $this->minimum_version, $version ) ) {
 			return true;
 		}
 
@@ -36,7 +36,7 @@ class WPUpdatePhp {
 	 * @return bool
 	 */
 	public function does_it_meet_recommended_php_version( $version ) {
-		if ( $this->is_recommended_php_version( $version ) ) {
+		if ( $this->version_passes_requirement( $this->recommended_version, $version ) ) {
 			return true;
 		}
 
@@ -45,21 +45,13 @@ class WPUpdatePhp {
 	}
 
 	/**
+	 * @param $requirement
 	 * @param $version
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
-	private function is_minimum_php_version( $version ) {
-		return version_compare( $this->minimum_version, $version, '<=' );
-	}
-
-	/**
-	 * @param $version
-	 *
-	 * @return boolean
-	 */
-	private function is_recommended_php_version( $version ) {
-		return version_compare( $this->recommended_version, $version, '<=' );
+	private function version_passes_requirement( $requirement, $version ) {
+		return version_compare( $requirement, $version, '<=' );
 	}
 
 	/**
