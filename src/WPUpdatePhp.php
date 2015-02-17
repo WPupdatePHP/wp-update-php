@@ -4,11 +4,16 @@ class WPUpdatePhp {
 	/** @var String */
 	private $minimum_version;
 
+	/** @var String */
+	private $recommended_version;
+
 	/**
-	 * @param $minimum_version
+	 * @param      $minimum_version
+	 * @param null $recommended_version
 	 */
-	public function __construct( $minimum_version ) {
+	public function __construct( $minimum_version, $recommended_version = null ) {
 		$this->minimum_version = $minimum_version;
+		$this->recommended_version = $recommended_version;
 	}
 
 	/**
