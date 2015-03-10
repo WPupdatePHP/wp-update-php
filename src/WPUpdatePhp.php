@@ -1,5 +1,9 @@
 <?php
 
+if ( class_exists( 'WPUpdatePhp' ) ) {
+	return;
+}
+
 class WPUpdatePhp {
 	/** @var String */
 	private $minimum_version;
