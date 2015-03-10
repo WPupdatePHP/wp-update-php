@@ -20,7 +20,7 @@ class WPUpdatePhp {
 	 *
 	 * @return bool
 	 */
-	public function does_it_meet_required_php_version( $version ) {
+	public function does_it_meet_required_php_version( $version = PHP_VERSION ) {
 		if ( $this->is_minimum_php_version( $version ) ) {
 			return true;
 		}
