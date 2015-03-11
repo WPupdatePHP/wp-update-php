@@ -12,8 +12,12 @@ class WPUpdatePhp {
 	private $recommended_version;
 
 	/**
-	 * @param      $minimum_version
-	 * @param null $recommended_version
+	 * @var string
+	 */
+	private $plugin_name = 'this plugin';
+
+	/**
+	 * @param $minimum_version
 	 */
 	public function __construct( $minimum_version, $recommended_version = null ) {
 		$this->minimum_version = $minimum_version;
