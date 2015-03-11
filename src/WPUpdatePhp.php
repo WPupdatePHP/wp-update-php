@@ -21,7 +21,7 @@ class WPUpdatePhp {
 	 *
 	 * @return bool
 	 */
-	public function does_it_meet_required_php_version( $version ) {
+	public function does_it_meet_required_php_version( $version = PHP_VERSION ) {
 		if ( $this->version_passes_requirement( $this->minimum_version, $version ) ) {
 			return true;
 		}
@@ -35,7 +35,7 @@ class WPUpdatePhp {
 	 *
 	 * @return bool
 	 */
-	public function does_it_meet_recommended_php_version( $version ) {
+	public function does_it_meet_recommended_php_version( $version = PHP_VERSION ) {
 		if ( $this->version_passes_requirement( $this->recommended_version, $version ) ) {
 			return true;
 		}
