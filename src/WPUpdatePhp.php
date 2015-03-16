@@ -5,19 +5,18 @@ if ( class_exists( 'WPUpdatePhp' ) ) {
 }
 
 class WPUpdatePhp {
-	/** @var String */
+	/** @var string */
 	private $minimum_version;
 
-	/** @var String */
+	/** @var string */
 	private $recommended_version;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $plugin_name = '';
 
 	/**
-	 * @param $minimum_version
+	 * @param $minimum_version string
+	 * @param $recommended_version string
 	 */
 	public function __construct( $minimum_version, $recommended_version = null ) {
 		$this->minimum_version = $minimum_version;
