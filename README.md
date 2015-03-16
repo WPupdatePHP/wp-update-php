@@ -19,7 +19,7 @@ _Example:_
 ```php
 $updatePhp = new WPUpdatePhp( '5.4.0' );
 
-if ( $updatePhp->does_it_meet_required_php_version() ) {
+if ( $updatePhp->does_it_meet_required_php_version( PHP_VERSION ) ) {
 	// Instantiate new object here
 }
 
