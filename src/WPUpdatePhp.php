@@ -24,6 +24,9 @@ class WPUpdatePhp {
 		$this->recommended_version = $recommended_version;
 	}
 
+	/**
+	 * @param $name string Name of the plugin to be used in admin notices
+	 */
 	public function set_plugin_name( $name ) {
 		$this->plugin_name = $name;
 	}
@@ -77,6 +80,10 @@ class WPUpdatePhp {
 		}
 	}
 
+	/**
+	 * Method hooked into admin_notices when minimum PHP version is not available to show this in a notice
+	 * @hook admin_notices
+	 */
 	public function minimum_admin_notice() {
 		echo '<div class="error">';
 
@@ -89,6 +96,10 @@ class WPUpdatePhp {
 		echo '</div>';
 	}
 
+	/**
+	 * Method hooked into admin_notices when recommended PHP version is not available to show this in a notice
+	 * @hook admin_notices
+	 */
 	public function recommended_admin_notice() {
 		echo '<div class="error">';
 
