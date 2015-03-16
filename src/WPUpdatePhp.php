@@ -14,7 +14,7 @@ class WPUpdatePhp {
 	/**
 	 * @var string
 	 */
-	private $plugin_name = 'this plugin';
+	private $plugin_name = '';
 
 	/**
 	 * @param $minimum_version
@@ -22,6 +22,10 @@ class WPUpdatePhp {
 	public function __construct( $minimum_version, $recommended_version = null ) {
 		$this->minimum_version = $minimum_version;
 		$this->recommended_version = $recommended_version;
+	}
+
+	public function set_plugin_name( $name ) {
+		$this->plugin_name = $name;
 	}
 
 	/**
