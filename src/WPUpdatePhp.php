@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * WPUpdatePHP
+ *
+ * @package   WPUpdatePhp
+ * @author    Coen Jacobs
+ * @license   GPLv3
+ * @link      https://github.com/WPupdatePHP/wp-update-php
+ */
+
 if ( class_exists( 'WPUpdatePhp' ) ) {
 	return;
 }
