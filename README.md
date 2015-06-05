@@ -27,6 +27,17 @@ if ( $updatePhp->does_it_meet_required_php_version() ) {
 // The version check has failed, a admin notice has been thrown
 ```
 
+## Including the library file
+Adding the library via Composer has preference. The Composer autoloader will automatically take care of preventing including two classes with the same name.
+
+In case you want to include the file manually, please wrap the include or require call in a [`class_exists`](http://php.net/class_exists) conditional, like so:
+
+```php
+if ( ! class_exists( 'WPUpdatePhp' ) ) {
+	// do the file include or require here
+}
+```
+
 ## License
 (GPLv3 license or later)
 
