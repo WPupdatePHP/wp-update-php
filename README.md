@@ -38,6 +38,9 @@ if ( ! class_exists( 'WPUpdatePhp' ) ) {
 }
 ```
 
+## Setting the name of the plugin
+The notice that will be thrown can also contain the name of the plugin. Use the `set_plugin_name( $name )` method on the `WPUpdatePhp` object to provide the name. This call needs to be made before the `does_it_meet_required_php_version()` method is called to check versions.
+
 ## License
 (GPLv3 license or later)
 
