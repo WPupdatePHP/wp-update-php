@@ -96,16 +96,16 @@ class WPUpdatePhp {
 	public function get_admin_notice( $level = 'minimum' ) {
 		if ( 'recommended' == $level ) {
 			if ( ! empty( $this->plugin_name ) ) {
-				return '<p>'. $this->plugin_name .' recommends a PHP versions higher than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+				return '<p>'. $this->plugin_name .' recommends a PHP version higher than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 			} else {
-				return '<p>This plugin recommends a PHP versions higher than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+				return '<p>This plugin recommends a PHP version higher than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 			}
 		}
 
 		if ( ! empty( $this->plugin_name ) ) {
-			return '<p>Unfortunately, '. $this->plugin_name .' can not run on PHP versions older than '. $this->minimum_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+			return '<p>Unfortunately, '. $this->plugin_name .' cannot run on PHP versions older than '. $this->minimum_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 		} else {
-			return '<p>Unfortunately, this plugin can not run on PHP versions older than '. $this->minimum_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+			return '<p>Unfortunately, this plugin cannot run on PHP versions older than '. $this->minimum_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 		}
 	}
 
