@@ -5,7 +5,7 @@
  *
  * @package   WPUpdatePhp
  * @author    Coen Jacobs
- * @license   GPLv3
+ * @license   GPL-2.0+
  * @link      https://github.com/WPupdatePHP/wp-update-php
  */
 
