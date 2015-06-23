@@ -42,14 +42,14 @@ if ( ! class_exists( 'WPUpdatePhp' ) ) {
 The notice that will be thrown can also contain the name of the plugin. Use the `set_plugin_name( $name )` method on the `WPUpdatePhp` object to provide the name. This call needs to be made before the `does_it_meet_required_php_version()` method is called to check versions.
 
 ## License
-(GPLv3 license or later)
+(GPLv2 license or later)
 
 WP Update PHP Library
 Copyright (C) 2015  Coen Jacobs
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
+the Free Software Foundation, either version 2 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
