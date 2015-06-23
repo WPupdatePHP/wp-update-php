@@ -1,5 +1,4 @@
 <?php
-
 /**
  * WPUpdatePHP
  *
@@ -9,6 +8,9 @@
  * @link      https://github.com/WPupdatePHP/wp-update-php
  */
 
+/**
+ * WPUpdatePhp.
+ */
 class WPUpdatePhp {
 	/** @var string */
 	private $minimum_version;
@@ -20,25 +22,30 @@ class WPUpdatePhp {
 	private $plugin_name = '';
 
 	/**
-	 * @param $minimum_version string
-	 * @param $recommended_version string
+	 * @param string $minimum_version     Minimum version of PHP.
+	 * @param string $recommended_version Recommended version of PHP.
 	 */
 	public function __construct( $minimum_version, $recommended_version = null ) {
-		$this->minimum_version = $minimum_version;
+		$this->minimum_version     = $minimum_version;
 		$this->recommended_version = $recommended_version;
 	}
 
 	/**
-	 * @param $name string Name of the plugin to be used in admin notices
+	 * Set the plugin name for the admin notice.
+	 *
+	 * @param string $name Name of the plugin to be used in admin notices.
 	 */
 	public function set_plugin_name( $name ) {
 		$this->plugin_name = $name;
 	}
 
 	/**
-	 * @param $version
+	 * Check given PHP version against minimum required version.
 	 *
-	 * @return bool
+	 * @param string $version Optional. PHP version to check against.
+	 *                        Default is the current PHP version as a string in
+	 *                        "major.minor.release[extra]" notation.
+	 * @return bool True if supplied PHP version meets minimum required version.
 	 */
 	public function does_it_meet_required_php_version( $version = PHP_VERSION ) {
 		if ( $this->version_passes_requirement( $this->minimum_version, $version ) ) {
@@ -50,9 +57,12 @@ class WPUpdatePhp {
 	}
 
 	/**
-	 * @param $version
+	 * Check given PHP version against recommended version.
 	 *
-	 * @return bool
+	 * @param string $version Optional. PHP version to check against.
+	 *                        Default is the current PHP version as a string in
+	 *                        "major.minor.release[extra]" notation.
+	 * @return bool True if supplied PHP version meets recommended version.
 	 */
 	public function does_it_meet_recommended_php_version( $version = PHP_VERSION ) {
 		if ( $this->version_passes_requirement( $this->recommended_version, $version ) ) {
@@ -64,19 +74,20 @@ class WPUpdatePhp {
 	}
 
 	/**
-	 * @param $requirement
-	 * @param $version
+	 * Check that one PHP version is less than or equal to another.
 	 *
-	 * @return bool
+	 * @param string $requirement The baseline version of PHP.
+	 * @param string $version     The given version of PHP.
+	 * @return bool True if the requirement is less than or equal to given version.
 	 */
 	private function version_passes_requirement( $requirement, $version ) {
 		return version_compare( $requirement, $version, '<=' );
 	}
 
 	/**
-	 * @param $callback
+	 * Conditionally hook in an admin notice.
 	 *
-	 * @return void
+	 * @param callable $callback Callable that displays admin notice.
 	 */
 	private function load_version_notice( $callback ) {
 		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
@@ -86,31 +97,35 @@ class WPUpdatePhp {
 	}
 
 	/**
-	 * Returns the string to be shown in the admin notice based on the level ('recommended' or default 'minimum')
-	 * of the notice. This will also add the plugin name to the notice string, if set.
+	 * Return the string to be shown in the admin notice.
 	 *
-	 * @param $level String ('recommended' or 'minimum' as default)
+	 * This is based on the level (`recommended` or default `minimum`) of the
+	 * notice. This will also add the plugin name to the notice string, if set.
 	 *
+	 * @param string $level Optional. Admin notice level, `recommended` or `minimum`.
+	 *                      Default is `minimum`.
 	 * @return string
 	 */
 	public function get_admin_notice( $level = 'minimum' ) {
-		if ( 'recommended' == $level ) {
+		if ( 'recommended' === $level ) {
 			if ( ! empty( $this->plugin_name ) ) {
-				return '<p>'. $this->plugin_name .' recommends a PHP version higher than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+				return '<p>' . $this->plugin_name . ' recommends a PHP version higher than ' . $this->recommended_version . '. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 			} else {
-				return '<p>This plugin recommends a PHP version higher than '. $this->recommended_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+				return '<p>This plugin recommends a PHP version higher than ' . $this->recommended_version . '. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 			}
 		}
 
 		if ( ! empty( $this->plugin_name ) ) {
-			return '<p>Unfortunately, '. $this->plugin_name .' cannot run on PHP versions older than '. $this->minimum_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+			return '<p>Unfortunately, ' . $this->plugin_name . ' cannot run on PHP versions older than ' . $this->minimum_version . '. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 		} else {
-			return '<p>Unfortunately, this plugin cannot run on PHP versions older than '. $this->minimum_version .'. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
+			return '<p>Unfortunately, this plugin cannot run on PHP versions older than ' . $this->minimum_version . '. Read more information about <a href="http://www.wpupdatephp.com/update/">how you can update</a>.</p>';
 		}
 	}
 
 	/**
-	 * Method hooked into admin_notices when minimum PHP version is not available to show this in a notice
+	 * Method hooked into admin_notices when minimum required PHP version is not
+	 * available to show this in a notice.
+	 *
 	 * @hook admin_notices
 	 */
 	public function minimum_admin_notice() {
@@ -120,7 +135,9 @@ class WPUpdatePhp {
 	}
 
 	/**
-	 * Method hooked into admin_notices when recommended PHP version is not available to show this in a notice
+	 * Method hooked into admin_notices when recommended PHP version is not
+	 * available to show this in a notice.
+	 *
 	 * @hook admin_notices
 	 */
 	public function recommended_admin_notice() {
