@@ -24,7 +24,7 @@ if ( $updatePhp->does_it_meet_required_php_version() ) {
     // Instantiate new object here
 }
 
-// The version check has failed, a admin notice has been thrown
+// The version check has failed, an admin notice has been thrown
 ```
 
 ## Including the library file
