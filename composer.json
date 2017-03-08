@@ -9,9 +9,7 @@
     "phpspec/phpspec": "~2.0"
   },
   "autoload": {
-    "psr-0": {
-      "": "src"
-    }
+    "classmap": ["src"]
   },
   "license": "GPL-2.0+"
 }
