@@ -2,7 +2,7 @@
 
 class WPUP_Minimum_Notice extends WPUP_Notice
 {
-	protected function getNoticeText()
+	public function getNoticeText()
 	{
 		$plugin_name = $this->plugin_name ? $this->plugin_name : 'this plugin';
 
