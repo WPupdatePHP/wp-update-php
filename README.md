@@ -18,7 +18,7 @@ For example, when you start your plugin by instantiating a new object, you shoul
 _Example:_
 
 ```php
-$updatePhp = new WPUpdatePhp( '5.4.0' );
+$updatePhp = new WPUpdatePhp( '5.6.0' );
 
 if ( $updatePhp->does_it_meet_required_php_version() ) {
     // Instantiate new object here
