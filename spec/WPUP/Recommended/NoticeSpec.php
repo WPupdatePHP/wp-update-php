@@ -1,19 +1,18 @@
 <?php
 
-namespace spec {
+namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+use PhpSpec\ObjectBehavior;
 
-    class WPUP_Recommended_NoticeSpec extends ObjectBehavior
+class WPUP_Recommended_NoticeSpec extends ObjectBehavior
+{
+    function let()
     {
-        function let()
-        {
-            $this->beConstructedWith('5.4.0', 'Test Plugin');
-        }
+        $this->beConstructedWith('5.4.0', 'Test Plugin');
+    }
 
-        function it_adds_plugin_name_to_admin_notice()
-        {
-            $this->getNoticeText()->shouldMatch('/Test Plugin/i');
-        }
+    function it_adds_plugin_name_to_admin_notice()
+    {
+        $this->getNoticeText()->shouldMatch('/Test Plugin/i');
     }
 }
