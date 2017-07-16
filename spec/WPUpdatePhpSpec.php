@@ -13,7 +13,6 @@ namespace {
 namespace spec {
 
     use PhpSpec\ObjectBehavior;
-    use Prophecy\Argument;
 
     class WPUpdatePhpSpec extends ObjectBehavior {
         function let() {
@@ -35,11 +34,5 @@ namespace spec {
         function it_fails_the_recommended_version() {
             $this->does_it_meet_recommended_php_version( '5.2.9' )->shouldReturn( false );
         }
-
-	    function it_adds_plugin_name_to_admin_notice() {
-		    $this->set_plugin_name( 'Test Plugin' );
-		    $this->get_admin_notice()->shouldMatch('/Test Plugin/i');
-		    $this->get_admin_notice( 'recommended' )->shouldMatch('/Test Plugin/i');
-	    }
     }
 }
