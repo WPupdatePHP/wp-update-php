@@ -1,15 +1,5 @@
 <?php
 
-namespace {
-    function add_action( $hook, $callback ) {
-        return true;
-    }
-
-    function is_admin() {
-        return true;
-    }
-}
-
 namespace spec {
 
     use PhpSpec\ObjectBehavior;

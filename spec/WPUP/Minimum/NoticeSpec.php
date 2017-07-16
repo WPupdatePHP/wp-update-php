@@ -1,11 +1,5 @@
 <?php
 
-namespace {
-    function esc_url( $string ) {
-        return $string;
-    }
-}
-
 namespace spec {
 
     use PhpSpec\ObjectBehavior;
