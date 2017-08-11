@@ -13,6 +13,7 @@ class WPUP_Recommended_NoticeSpec extends ObjectBehavior
 
     function it_adds_plugin_name_to_admin_notice()
     {
+        $this->setTranslator( new \WPUP_Translator() );
         $this->getNoticeText()->shouldMatch('/Test Plugin/i');
     }
 }
