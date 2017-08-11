@@ -21,6 +21,9 @@ class WPUpdatePhp {
 	/** @var string */
 	private $plugin_name = '';
 
+	/** @var WPUP_Translator */
+	public $translator;
+
 	/**
 	 * @param string $minimum_version     Minimum version of PHP.
 	 * @param string $recommended_version Recommended version of PHP.
@@ -28,6 +31,7 @@ class WPUpdatePhp {
 	public function __construct( $minimum_version, $recommended_version = null ) {
 		$this->minimum_version     = $minimum_version;
 		$this->recommended_version = $recommended_version;
+		$this->translator = new WPUP_Translator();
 	}
 
 	/**
@@ -53,6 +57,7 @@ class WPUpdatePhp {
 		}
 
 		$notice = new WPUP_Minimum_Notice( $this->minimum_version, $this->plugin_name );
+		$notice->setTranslator($this->translator);
 		$this->load_version_notice( array( $notice, 'display' ) );
 		return false;
 	}
@@ -71,6 +76,7 @@ class WPUpdatePhp {
 		}
 
 		$notice = new WPUP_Recommended_Notice( $this->recommended_version, $this->plugin_name );
+        $notice->setTranslator($this->translator);
 		$this->load_version_notice( array( $notice, 'display' ) );
 		return false;
 	}
