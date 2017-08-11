@@ -8,6 +8,9 @@
   "require-dev": {
     "phpspec/phpspec": "~2.0"
   },
+  "suggest": {
+    "coenjacobs/mozart": "Easily wrap this library with your own prefix, to prevent collisions when multiple plugins use this library"
+  },
   "autoload": {
     "classmap": ["src"]
   },
