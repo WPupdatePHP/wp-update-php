@@ -21,22 +21,19 @@ class WPUpdatePhp {
 	/** @var string */
 	private $plugin_name = '';
 
-	/**
-	 * @param string $minimum_version     Minimum version of PHP.
-	 * @param string $recommended_version Recommended version of PHP.
-	 */
-	public function __construct( $minimum_version, $recommended_version = null ) {
+	/** @var WPUP_Translator */
+	public $translator;
+
+    /**
+     * @param string $plugin_name
+     * @param string $minimum_version Minimum version of PHP.
+     * @param string $recommended_version Recommended version of PHP.
+     */
+	public function __construct( $plugin_name, $minimum_version, $recommended_version = null ) {
+		$this->plugin_name         = $plugin_name;
 		$this->minimum_version     = $minimum_version;
 		$this->recommended_version = $recommended_version;
-	}
-
-	/**
-	 * Set the plugin name for the admin notice.
-	 *
-	 * @param string $name Name of the plugin to be used in admin notices.
-	 */
-	public function set_plugin_name( $name ) {
-		$this->plugin_name = $name;
+		$this->translator = new WPUP_Translator();
 	}
 
 	/**
@@ -53,6 +50,7 @@ class WPUpdatePhp {
 		}
 
 		$notice = new WPUP_Minimum_Notice( $this->minimum_version, $this->plugin_name );
+		$notice->setTranslator($this->translator);
 		$this->load_version_notice( array( $notice, 'display' ) );
 		return false;
 	}
@@ -71,6 +69,7 @@ class WPUpdatePhp {
 		}
 
 		$notice = new WPUP_Recommended_Notice( $this->recommended_version, $this->plugin_name );
+        $notice->setTranslator($this->translator);
 		$this->load_version_notice( array( $notice, 'display' ) );
 		return false;
 	}

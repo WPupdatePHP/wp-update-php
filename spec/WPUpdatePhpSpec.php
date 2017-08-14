@@ -6,7 +6,7 @@ use PhpSpec\ObjectBehavior;
 
 class WPUpdatePhpSpec extends ObjectBehavior {
     function let() {
-        $this->beConstructedWith( '5.4.0', '5.3.0' );
+        $this->beConstructedWith( 'Test Plugin', '5.4.0', '5.3.0' );
     }
 
     function it_can_run_on_minimum_version() {
