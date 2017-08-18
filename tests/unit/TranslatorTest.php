@@ -1,8 +1,6 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
-
-class TranslatorTest extends TestCase
+class TranslatorTest extends PHPUnit_Framework_TestCase
 {
     /** @test */
     public function itReturnsNewStringAfterSetting()

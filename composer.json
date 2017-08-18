@@ -5,15 +5,41 @@
     "issues": "https://github.com/wpupdatephp/wp-update-php/issues",
     "source": "https://github.com/wpupdatephp/wp-update-php"
   },
+  "require": {
+    "php": ">=5.2.4",
+    "xrstf/composer-php52": "^1.0"
+  },
   "require-dev": {
     "phpspec/phpspec": "~2.0",
-    "phpunit/phpunit": "^6.3"
+    "phpunit/phpunit-php52": "dev-3.6.12-php52",
+    "phpunit/phpunit-mock-objects-php52": "dev-1.1.0-php52"
   },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/garex/phpunit"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/garex/phpunit-mock-objects"
+    }
+  ],
   "suggest": {
     "coenjacobs/mozart": "Easily wrap this library with your own prefix, to prevent collisions when multiple plugins use this library"
   },
   "autoload": {
     "classmap": ["src"]
   },
-  "license": "GPL-2.0+"
+  "license": "GPL-2.0+",
+  "scripts": {
+    "post-install-cmd": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+    ],
+    "post-update-cmd": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+    ],
+    "post-autoload-dump": [
+      "xrstf\\Composer52\\Generator::onPostInstallCmd"
+    ]
+  }
 }
