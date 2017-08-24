@@ -11,19 +11,8 @@
   },
   "require-dev": {
     "phpspec/phpspec": "~2.0",
-    "phpunit/phpunit-php52": "dev-3.6.12-php52",
-    "phpunit/phpunit-mock-objects-php52": "dev-1.1.0-php52"
+    "phpunit/phpunit": "^3.6.12"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/garex/phpunit"
-    },
-    {
-      "type": "git",
-      "url": "https://github.com/garex/phpunit-mock-objects"
-    }
-  ],
   "suggest": {
     "coenjacobs/mozart": "Easily wrap this library with your own prefix, to prevent collisions when multiple plugins use this library"
   },
