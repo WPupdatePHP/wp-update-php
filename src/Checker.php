@@ -5,29 +5,6 @@ class WPUP_Checker
     /** @var array */
     public $checks = array();
 
-    // $arguments = array(
-    //     // 'wordpress' => array(
-    //     //     array(
-    //     //         'version' => '3.7.1',
-    //     //         'required' => false,
-    //     //     ),
-    //     //     array(
-    //     //         'version' => '3.5.0',
-    //     //         'required' => true,
-    //     //     ),
-    //     //   ),
-    //       'php' => array(
-    //         array(
-    //           'version' => '7.0.0',
-    //           'required' => false,
-    //         ),
-    //         // array(
-    //         //   'version' => '5.6.0',
-    //         //   'required' => true,
-    //         // ),
-    //       ),
-    // );
-
     /** @var array */
     public $arguments = array();
 
