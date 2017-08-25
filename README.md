@@ -8,7 +8,7 @@ We recommend installing the library using [Composer](https://getcomposer.org/), 
 composer require wpupdatephp/wp-update-php
 ```
 
-Another option is to download the [class file](https://github.com/WPupdatePHP/wp-update-php/blob/master/src/WPUpdatePhp.php) manually.
+To prevent collisions, you can install this library inside your own prefixed class names (eg `CJ_WPUpdatePhp`), using [Mozart](https://github.com/coenjacobs/mozart) and we **highly recommend doing this** as it's currently the only way to prevent hard to debug conflicts.
 
 ## Usage
 Usage of this library depends on how you start your plugin. The core `check()` method does all the checking for you. You can output an admin notice in case the version requirement is not met.
@@ -66,17 +66,6 @@ $arguments = array(
         ),
     ),
 );
-```
-
-## Including the library file
-Adding the library via Composer has preference. The Composer autoloader will automatically take care of preventing including two classes with the same name.
-
-In case you want to include the file manually, please wrap the include or require call in a [`class_exists`](http://php.net/class_exists) conditional, like so:
-
-```php
-if ( ! class_exists( 'WPUpdatePhp' ) ) {
-	// do the file include or require here
-}
 ```
 
 ## License
