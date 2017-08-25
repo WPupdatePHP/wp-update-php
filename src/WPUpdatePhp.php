@@ -12,29 +12,31 @@
  * WPUpdatePhp.
  */
 class WPUpdatePhp {
-	/** @var string */
-	private $minimum_version;
-
-	/** @var string */
-	private $recommended_version;
-
-	/** @var string */
-	private $plugin_name = '';
+    /** @var string */
+    private $plugin_name;
 
 	/** @var WPUP_Translator */
 	public $translator;
 
+	/** @var WPUP_Checker */
+	private $checker;
+
     /**
      * @param string $plugin_name
-     * @param string $minimum_version Minimum version of PHP.
-     * @param string $recommended_version Recommended version of PHP.
+     * @param array $arguments
      */
-	public function __construct( $plugin_name, $minimum_version, $recommended_version = null ) {
-		$this->plugin_name         = $plugin_name;
-		$this->minimum_version     = $minimum_version;
-		$this->recommended_version = $recommended_version;
+	public function __construct( $plugin_name, $arguments = array()) {
+		$this->plugin_name = $plugin_name;
+
 		$this->translator = new WPUP_Translator();
+		$this->checker    = new WPUP_Checker($arguments);
 	}
+
+	public function check()
+    {
+        $this->checker->setup();
+        $this->checker->check();
+    }
 
 	/**
 	 * Check given PHP version against minimum required version.
