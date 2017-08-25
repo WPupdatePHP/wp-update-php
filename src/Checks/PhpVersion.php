@@ -3,9 +3,6 @@
 class WPUP_PhpVersion extends WPUP_VersionCheck
 {
     /** @var string */
-    public $match_version;
-
-    /** @var string */
     public $arguments_key = 'php';
 
     public function setup()

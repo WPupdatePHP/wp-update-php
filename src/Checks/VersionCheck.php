@@ -11,6 +11,9 @@ abstract class WPUP_VersionCheck implements WPUP_Check
     /** @var string */
     public $arguments_key;
 
+    /** @var string */
+    public $match_version;
+
     public function __construct(WPUP_Checker $checker)
     {
         $this->arguments = $checker->arguments;
