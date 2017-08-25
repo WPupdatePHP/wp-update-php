@@ -11,20 +11,61 @@ composer require wpupdatephp/wp-update-php
 Another option is to download the [class file](https://github.com/WPupdatePHP/wp-update-php/blob/master/src/WPUpdatePhp.php) manually.
 
 ## Usage
-Usage of this library depends on how you start your plugin. The core `does_it_meet_required_php_version` method does all the checking for you and adds an admin notice in case the version requirement is not met.
+Usage of this library depends on how you start your plugin. The core `check()` method does all the checking for you. You can output an admin notice in case the version requirement is not met.
 
-For example, when you start your plugin by instantiating a new object, you should wrap a conditional check around it. 
+For example, when you start your plugin by instantiating a new object, you should wrap a conditional check around it.
 
 _Example:_
 
 ```php
-$updatePhp = new WPUpdatePhp( '5.6.0' );
+$arguments = array(
+    'php' => array(
+        array(
+            'version' => '7.0.0',
+            'required' => false,
+        ),
+        array(
+            'version' => '5.6.0',
+            'required' => true,
+        ),
+    ),
+);
+$updatePhp = new WPUpdatePhp( 'Plugin Name', $arguments );
+$updatePhp->check();
 
-if ( $updatePhp->does_it_meet_required_php_version() ) {
+if ( $updatePhp->passes() ) {
     // Instantiate new object here
 }
 
-// The version check has failed, an admin notice has been thrown
+// The version check has failed, an admin notice can be shown
+```
+
+## Available arguments
+The full list of available arguments:
+
+```php
+$arguments = array(
+    'wordpress' => array(
+        array(
+            'version' => '3.7.1',
+            'required' => false,
+        ),
+        array(
+            'version' => '3.5.0',
+            'required' => true,
+        ),
+    ),
+    'php' => array(
+        array(
+            'version' => '7.0.0',
+            'required' => false,
+        ),
+        array(
+            'version' => '5.6.0',
+            'required' => true,
+        ),
+    ),
+);
 ```
 
 ## Including the library file
@@ -37,9 +78,6 @@ if ( ! class_exists( 'WPUpdatePhp' ) ) {
 	// do the file include or require here
 }
 ```
-
-## Setting the name of the plugin
-The notice that will be thrown can also contain the name of the plugin. Use the `set_plugin_name( $name )` method on the `WPUpdatePhp` object to provide the name. This call needs to be made before the `does_it_meet_required_php_version()` method is called to check versions.
 
 ## License
 (GPLv2 license or later)
